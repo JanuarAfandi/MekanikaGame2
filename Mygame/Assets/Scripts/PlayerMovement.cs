@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
 
         if(health <= 0)
         {
-            Destroy(gameObject);
+           // Destroy(gameObject);
         }
 
         //for joystick
