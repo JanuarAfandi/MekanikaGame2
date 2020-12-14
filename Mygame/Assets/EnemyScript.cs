@@ -19,32 +19,37 @@ public class EnemyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        print(scaleX);
+
         timer += Time.deltaTime;
-        if(player != null)
+        if (player != null)
+        {
             transform.position = Vector2.MoveTowards(transform.position, player.transform.position, 0.05f);
 
-        if(transform.position.x < player.transform.position.x)
-        {
-            transform.localScale = new Vector3(-scaleX, transform.localScale.y, transform.localScale.z);
-        }
-        else if (transform.position.x > player.transform.position.x)
-        {
-            transform.localScale = new Vector3(scaleX, transform.localScale.y, transform.localScale.z);
-        }
-        else
-        {
-            transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z);
-        }
+            if (transform.position.x < player.transform.position.x)
+            {
+                
+                transform.localScale = new Vector3(-scaleX, transform.localScale.y, transform.localScale.z);
+            }
+            else if (transform.position.x > player.transform.position.x)
+            {
+                transform.localScale = new Vector3(scaleX, transform.localScale.y, transform.localScale.z);
+            }
+            else
+            {
+                transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z);
+            }
 
-        if (timer > 0.1f)
-        {
-            Instantiate(bullet, childShoot.transform.position, Quaternion.identity);
-            timer = 0f;
-        }
+            if (timer > 1f)
+            {
+                Instantiate(bullet, childShoot.transform.position, Quaternion.identity);
+                timer = 0f;
+            }
 
-        if(health <= 0)
-        {
-            Destroy(gameObject);
+            if (health <= 0)
+            {
+            //    Destroy(gameObject);
+            }
         }
     }
 

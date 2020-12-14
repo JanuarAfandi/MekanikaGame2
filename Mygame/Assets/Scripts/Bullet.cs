@@ -4,27 +4,42 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    // Start is called before the first frame update
+    GameObject player;
+
+    bool left, right;
+
     void Start()
     {
-        
+        player = GameObject.FindWithTag("Player");
+
+        if (player.transform.localScale.x > 0)
+        {
+            right = true;
+            //   transform.position += transform.right * 10f * Time.deltaTime;
+        }
+        else
+        {
+            right = false;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if(PlayerMovement.scaleX > 0)
+        if (right)
         {
             transform.position += transform.right * 10f * Time.deltaTime;
-        }else
+        }
+        else
         {
             transform.position -= transform.right * 10f * Time.deltaTime;
         }
+
+        Destroy(gameObject, 2f);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Enemy")
+        if(collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Batas")
         {
             Destroy(gameObject);
         }

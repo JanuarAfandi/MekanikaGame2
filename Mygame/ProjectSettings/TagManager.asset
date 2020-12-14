@@ -8,6 +8,7 @@ TagManager:
   - BulletPlayer
   - Enemy
   - BulletEnemy
+  - Batas
   layers:
   - Default
   - TransparentFX
